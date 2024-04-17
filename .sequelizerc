@@ -6,4 +6,4 @@ module.exports = {
      "migrations-path": resolve(__dirname, 'src','database','migrations'),
 }
 
-// exporta os caminhos corretos de cada pasta
+// exports the correct paths for each folder
