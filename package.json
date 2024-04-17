@@ -9,10 +9,16 @@
     "dev": "nodemon src/server.js"
   },
   "dependencies": {
-    "express": "^4.19.2"
+    "e": "^0.2.33",
+    "express": "^4.19.2",
+    "install": "^0.13.0",
+    "mysql2": "^3.9.5",
+    "npm": "^10.5.2",
+    "sequelize": "^6.37.3"
   },
   "devDependencies": {
     "nodemon": "^3.1.0",
+    "sequelize-cli": "^6.6.2",
     "sucrase": "^3.35.0"
   }
 }
