@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/"> CampIf </a>
+
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="/">Home</a>
+    </li>
+  </ul>
+
+  <% if(user != undefined){ %>
+  <h4 style="color: white;">Usuário: <%= user.name %></h4>
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a href="/admin/user/homePage" class="nav-link">HomeUser</a>
+    </li>
+  </ul>
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a href="/logout" class="nav-link">Logout</a>
+    </li>
+  </ul>
+
+  <% } else{ %>
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a href="/user/login" class="nav-link">Login</a>
+    </li>
+  </ul>
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a href="/user/create" class="nav-link">Criar Conta</a>
+    </li>
+  </ul>
+
+  <% }%>
+</nav>

@@ -11,12 +11,17 @@
     <a href="/">Home</a>
     <a href="/logout">Logout</a>
     <hr />
+    <h2>Usuário: <%= user_name %></h2>
+    <hr>
     <% if(team_id==null){ %>
     <h2>CRIAR TIME</h2>
     <a href="/admin/team/create">CRIAR TIME</a>
     <% } else{ %>
     <h1>SEU TIME:</h1>
-    <a href="/admin/team/newPlayer">ADICIONAR JOGADOR</a>
+    <% if(team.captain_id==user_id){ %>
+      <a href="/admin/team/newPlayer">ADICIONAR JOGADOR</a>
+      <% } %>
+    
     <% team.users.forEach(user => { %>
     <h3><%= user.name %></h3>
     <% }) %> <% } %>

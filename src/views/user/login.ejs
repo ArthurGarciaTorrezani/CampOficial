@@ -1,23 +1,41 @@
+<%- include( '../partials/header.ejs' ) %> <%- include( '../partials/navbar.ejs'
+) %>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Document</title>
-</head>
-<body>
-     <h1>ENTRAR NA CONTA</h1>
-     <hr>
-     <a href="/">Home</a>
-     <hr>
-     <p> não escreve errado senão c vai voltar pro lobby </p>
-     <hr>
-     <form action="/session" method="post">
-          <input type="text" name="ra" placeholder="registro academico">
-          <input type="password" name="password" placeholder="password">
-          <button type="submit">ENTRAR</button>
-     </form>
-</body>
-</html>
+<div class="container">
+  <hr />
+  <div class="card mt-3">
+    <!-- mt = margin top / mb = margin bottom // ml = margin left // mr = margin right -->
+    <div class="card-header">Login de Usuário</div>
+    <div class="card-body">
+      <form action="/session" method="POST">
+        <div class="form-group">
+          <label for="ra">Registro academico:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="ra"
+            name="ra"
+            aria-describedby="emailHelp"
+            placeholder="1234567"
+            required
+          />
+        </div>
 
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password:</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            placeholder="password"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn btn-dark btn -block">Confirmar</button>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include( '../partials/footer.ejs' ) %>

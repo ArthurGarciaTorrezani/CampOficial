@@ -1,5 +1,6 @@
 import { Model, Sequelize } from "sequelize";
 import User from "./User";
+
 class Team extends Model {
   static init(sequelize) {
     // sequelize = connection
@@ -7,6 +8,7 @@ class Team extends Model {
       {
         name: Sequelize.STRING,
         amountplayers: Sequelize.INTEGER,
+        captain_name:Sequelize.STRING,
       },
       {
         sequelize,
@@ -16,6 +18,7 @@ class Team extends Model {
   }
 
   static associate() {
+    this.belongsTo(User,{foreignKey:'captain_id',as:'captain'})
     this.hasMany(User);
   }
 }

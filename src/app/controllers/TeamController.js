@@ -4,7 +4,7 @@ import User from "../models/User";
 
 class TeamController {
   async store(req, res) {
-    const teamExistName = await User.findOne({
+    const teamExistName = await Team.findOne({
       where: { name: req.body.name },
     });
     if (teamExistName) {
@@ -14,6 +14,8 @@ class TeamController {
     const team = await Team.create({
       name: req.body.name,
       amountplayers: 1,
+      captain_id:req.session.user.id,
+      captain_name:req.session.user.name,
     });
 
     const id = team.id;

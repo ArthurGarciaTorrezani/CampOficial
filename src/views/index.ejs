@@ -1,36 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Document</title>
-     <link rel="stylesheet" href="style.css">
-</head>
+<%- include ('partials/header.ejs') %> 
+<%- include ('partials/homenavbar.ejs')%>
 <body>
-     
-     <h1>CAMPEONATO IF</h1>
-     <hr>
-     <% if(user != undefined){ %>
-          <h2>Usuário: <%= user.name %></h2>
-          <a href="/admin/user/homePage">HomeUser</a>
-          <a href="/logout">Logout</a>
-          <% } else{ %>
-               <a href="/user/login">Entrar</a> <a href="/user/new">Criar Conta</a>
-               <% }%>
-    
-     <hr>
-     <h2>TIMES CADASTRADOS</h2>
-     <% teams.forEach(team=>{ %>
-
-          <h2>
-               <%= team.name %>
-          </h2>
-
-          <% }) %>
+  <div class="container">
+    <hr />
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">Bem vindo</h1>
+        <p class="lead">CAMPEONATO IF</p>
+      </div>
+    </div>
+    <hr />
+    <h2>TIMES CADASTRADOS</h2>
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nome</th>
+          <th>Capitão</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% teams.forEach(team => { %>
+        <tr>
+          <th><%= team.name %></th>
+          <th><%= team.captain_name %></th>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
 </body>
 
-</html>
-
-
-</html>
-
+<%- include ('partials/footer.ejs') %>

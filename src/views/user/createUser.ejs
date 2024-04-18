@@ -1,23 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Document</title>
-</head>
+<%- include( '../partials/header.ejs' ) %> <%- include( '../partials/navbar.ejs'
+) %>
 
-<body>
-     <h1>CRIAR CONTA</h1>
-     <hr>
-     <a href="/">Home</a>
-     <hr>
-     <form action="/user/store" method="post">
-          <input type="text" name="name" placeholder="name">
-          <input type="text" name="ra" placeholder="registro academico">
-          <input type="text" name="email" placeholder="email">
-          <input type="password" name="password" placeholder="password">
-          <button type="submit">CRIAR</button>
-     </form>
-</body>
-</html>
-</html>
+<div class="container">
+  <hr />
+  <div class="card mt-3">
+    <!-- mt = margin top / mb = margin bottom // ml = margin left // mr = margin right -->
+    <div class="card-header">Criação de Usuário</div>
+    <div class="card-body">
+      <form action="/user/store" method="POST">
+        <div class="form-group">
+          <label for="name"></label>
+          <input
+            class="form-control"
+            name="name"
+            type="text"
+            placeholder="name"
+            id="name"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="ra"></label>
+          <input
+            class="form-control"
+            name="ra"
+            type="text"
+            placeholder="1234567"
+            id="ra"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email"></label>
+          <input
+            class="form-control"
+            name="email"
+            type="email"
+            placeholder="email@exemplo.com"
+            id="email"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password"></label>
+          <input
+            class="form-control"
+            name="password"
+            type="password"
+            placeholder="password"
+            id="password"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn btn-dark btn -block">Criar</button>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include( '../partials/footer.ejs' ) %>

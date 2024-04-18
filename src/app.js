@@ -20,7 +20,7 @@ class App {
         resave: true,
         saveUninitialized: true,
         secret: "05112003", // session security
-        cookie: { maxAge: 30000 }, // session duration
+        cookie: { maxAge: 300000 }, // session duration
       })
     );
     this.server.use(express.static(path.join(__dirname, "public"))); // isso daqui é pra nao precisar de colocar todo o caminho da pasta
