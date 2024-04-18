@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+</head>
+<body>
+     <h1>ADICIONAR JOGADOR AO TIME</h1>
+     <hr>
+     <a href="/">HOME</a>
+     <hr>
+     <h2>Selecione o jogador disponível</h2>
+     <form action="/admin/team/addPlayer" method="post">
+          <select name="id" class="form-control">
+               <% users.forEach((user)=>{ %>
+                    <option value="<%= user.id %>"> <%= user.name %> </option>
+                <% }) %>
+              
+           </select>
+          <button type="submit">ADICIONAR</button>
+     </form>
+</body>
+</html>
+</html>

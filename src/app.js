@@ -23,7 +23,7 @@ class App {
         cookie: { maxAge: 30000 }, // session duration
       })
     );
-    this.server.use(express.static("public")); // isso daqui é pra nao precisar de colocar todo o caminho da pasta
+    this.server.use(express.static(path.join(__dirname, "public"))); // isso daqui é pra nao precisar de colocar todo o caminho da pasta
     this.server.set("view engine", "ejs");
     this.server.set("views", path.join(__dirname, "views"));
     // set body-parser for use forms

@@ -1,4 +1,5 @@
 import User from "../models/User";
+import Team from "../models/Team";
 
 class UserController {
   async store(req, res) {
@@ -22,8 +23,27 @@ class UserController {
     return res.render("user/createUser");
   }
 
-  login(req,res){
+  pageLogin(req, res) {
     return res.render("user/login");
+  }
+
+  pageHome(req, res) {
+    Team.findOne({
+      where: {
+        id: req.session.user.team_id,
+      },
+      include: [
+        {
+          model: User,
+        },
+      ],
+    }).then((team) => {
+      res.render("admin/user/homePage", {
+        team: team,
+        team_id: req.session.user.team_id,
+      });
+    });
+    
   }
 }
 export default new UserController();

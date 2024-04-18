@@ -4,15 +4,33 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Document</title>
-  
+     <link rel="stylesheet" href="/src/public/style.css">
 </head>
 <body>
-     <H1>HOME PAGE</H1>
+     
+     <h1>CAMPEONATO IF</h1>
      <hr>
-     <a href="/user/login">ENTRAR</a>
-     <a href="/user/create">CADASTRAR</a>
+     <% if(user != undefined){ %>
+          <h2>Usuário: <%= user.name %></h2>
+          <a href="/admin/user/homePage">HomeUser</a>
+          <a href="/logout">Logout</a>
+          <% } else{ %>
+               <a href="/user/login">Entrar</a> <a href="/user/new">Criar Conta</a>
+               <% }%>
+    
      <hr>
      <h2>TIMES CADASTRADOS</h2>
+     <% teams.forEach(team=>{ %>
+
+          <h2>
+               <%= team.name %>
+          </h2>
+
+          <% }) %>
 </body>
+
+</html>
+
+
 </html>
 

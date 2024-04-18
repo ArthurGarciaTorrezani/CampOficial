@@ -21,12 +21,12 @@ class SessionController {
       name: name,
       team_id: team_id,
     };
-    return res.redirect("/");
+    return res.redirect("/admin/user/homePage");
   }
 
   logout(req,res){
     req.session.user = undefined;
-    res.redirect("/");
+    return res.redirect("/");
   }
 }
 
