@@ -1,6 +1,7 @@
 import { Model, Sequelize } from "sequelize";
 import bcrypt from "bcryptjs";
 import Team from "./Team";
+import File from "./File";
 
 class User extends Model {
   static init(sequelize) {
@@ -31,7 +32,8 @@ class User extends Model {
   }
 
   static associate() {
-    this.belongsTo(Team, { foreignKey: "team_id" });
+    this.belongsTo(Team, { foreignKey: "team_id", as:'team' });
+    this.belongsTo(File,{foreignKey:"avatar_id", as:'avatar'})
   }
 }
 
