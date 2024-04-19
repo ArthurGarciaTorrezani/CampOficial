@@ -1,3 +1,4 @@
+import { where } from "sequelize";
 import { password } from "../../config/database";
 import Team from "../models/Team";
 import User from "../models/User";
@@ -14,8 +15,8 @@ class TeamController {
     const team = await Team.create({
       name: req.body.name,
       amountplayers: 1,
-      captain_id:req.session.user.id,
-      captain_name:req.session.user.name,
+      captain_id: req.session.user.id,
+      captain_name: req.session.user.name,
     });
 
     const id = team.id;
@@ -34,7 +35,7 @@ class TeamController {
   }
 
   pageCreateTeam(req, res) {
-    return res.render("admin/team/createTeam",{user:req.session.user});
+    return res.render("admin/team/createTeam", { user: req.session.user });
   }
 
   pageNewPlayer(req, res) {
@@ -43,14 +44,30 @@ class TeamController {
         team_id: null,
       },
     }).then((users) => {
-      res.render("admin/team/newPlayer", { users: users, user:req.session.user });
+      res.render("admin/team/newPlayer", {
+        users: users,
+        user: req.session.user,
+      });
     });
   }
 
-  addPlayer(req,res){
+  async addPlayer(req, res) {
     const userId = req.body.id;
     const teamId = req.session.user.team_id;
-     User.update(
+    const { amountplayers } = await Team.findByPk(teamId);
+
+    Team.update(
+      {
+        amountplayers: amountplayers + 1,
+      },
+      {
+        where: {
+          id: teamId,
+        },
+      }
+    );
+
+    User.update(
       {
         team_id: teamId,
       },
@@ -63,7 +80,18 @@ class TeamController {
       res.redirect("/admin/user/homePage");
     });
   }
-  
+
+  removePlayer(req, res) {
+    const { id } = req.body;
+    User.update(
+      { team_id: null },
+      {
+        where: {
+          id: id,
+        },
+      }
+    ).then(res.redirect("/admin/user/homePage"));
+  }
 }
 
 export default new TeamController();

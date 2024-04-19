@@ -15,6 +15,7 @@
       <thead class="thead-dark">
         <tr>
           <th>Nome</th>
+          <th>Número de jogadores</th>
           <th>Capitão</th>
         </tr>
       </thead>
@@ -22,6 +23,7 @@
         <% teams.forEach(team => { %>
         <tr>
           <th><%= team.name %></th>
+          <th><%= team.amountplayers %></th>
           <th><%= team.captain_name %></th>
         </tr>
         <% }) %>

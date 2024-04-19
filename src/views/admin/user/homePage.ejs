@@ -4,11 +4,19 @@
 <div class="container">
   <hr />
   <div class="card mt-3">
+
+
+    <img
+    src="/img/uploads/<%= nameAvatar %>"
+    
+    width="300"
+    height="200"
+  />
+
     <div class="card-header"><h1>PAGE ADM</h1></div>
     <div class="card-body">
       <% if(user.team_id==null){ %>
       <h2><a href="/admin/team/create">CRIAR TIME</a></h2>
-      
       <% } else{ %>
       <h2>TIME: <%= team.name %></h2>
       <hr />
@@ -19,17 +27,57 @@
         <thead class="thead-dark">
           <tr>
             <th>Jogadores</th>
+            <th>Opções</th>
           </tr>
         </thead>
         <tbody>
-          <% } %> <% team.users.forEach(user => { %>
+          <% team.users.forEach(user => { %>
+          <tr>
+            <th><%= user.name %></th>
+            <th>
+              <form
+                method="POST"
+                action="/admin/team/removePlayer"
+                style="display: inline"
+                onsubmit="confirmarDelecao(event, this)"
+              >
+                <input type="hidden" name="id" id="id" value="<%= user.id %>" />
+                <button class="btn btn-danger">Deletar</button>
+              </form>
+            </th>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% }else{ %>
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>Jogadores</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% team.users.forEach(user => { %>
           <tr>
             <th><%= user.name %></th>
           </tr>
-          <% }) %> <% } %>
+          <% }) %>
         </tbody>
       </table>
+      <% } %> <% } %>
     </div>
   </div>
 </div>
+
+
+
 <%- include ('../../partials/footer.ejs') %>
+<script>
+  function confirmarDelecao(event, form) {
+    event.preventDefault();
+    var decision = confirm("Você quer deletar este jogador?");
+    if (decision) {
+      form.submit();
+    }
+  }
+</script>

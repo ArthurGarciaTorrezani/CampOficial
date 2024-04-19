@@ -1,6 +1,6 @@
 import User from "../models/User";
 import Team from "../models/Team";
-
+import File from "../models/File";
 class UserController {
   async store(req, res) {
     const userExistEmail = await User.findOne({
@@ -27,7 +27,15 @@ class UserController {
     return res.render("user/login");
   }
 
-  pageHome(req, res) {
+  async pageHome(req, res) {
+    let nameFile;
+    const file = await File.findByPk(req.session.user.avatar_id);
+    if(file == null){
+      nameFile = "padrao.webp";
+    }else{
+      nameFile =file.name;
+    }
+   
     Team.findOne({
       where: {
         id: req.session.user.team_id,
@@ -41,13 +49,17 @@ class UserController {
       res.render("admin/user/homePage", {
         team: team,
         user: req.session.user,
+        nameAvatar:nameFile,
       });
     });
   }
+
+  pageProfile(req,res){
+    return res.render('admin/user/profile',);
+  }
+
+  pageAvatar(req,res){
+    return res.render("admin/user/avatarPage",{user:req.session.user});
+  }
 }
 export default new UserController();
-/*
-team_id: req.session.user.team_id,
-        user_id:req.session.user.id,
-        user_name:req.session.user.name,
-*/

@@ -24,7 +24,7 @@ class SessionController {
     return res.redirect("/admin/user/homePage");
   }
 
-  logout(req,res){
+  logout(req, res) {
     req.session.user = undefined;
     return res.redirect("/");
   }
