@@ -40,12 +40,14 @@ class UserController {
     }).then((team) => {
       res.render("admin/user/homePage", {
         team: team,
-        team_id: req.session.user.team_id,
-        user_id:req.session.user.id,
-        user_name:req.session.user.name,
+        user: req.session.user,
       });
     });
-    
   }
 }
 export default new UserController();
+/*
+team_id: req.session.user.team_id,
+        user_id:req.session.user.id,
+        user_name:req.session.user.name,
+*/

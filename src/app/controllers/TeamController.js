@@ -34,7 +34,7 @@ class TeamController {
   }
 
   pageCreateTeam(req, res) {
-    return res.render("admin/team/createTeam");
+    return res.render("admin/team/createTeam",{user:req.session.user});
   }
 
   pageNewPlayer(req, res) {
@@ -43,7 +43,7 @@ class TeamController {
         team_id: null,
       },
     }).then((users) => {
-      res.render("admin/team/newPlayer", { users: users });
+      res.render("admin/team/newPlayer", { users: users, user:req.session.user });
     });
   }
 

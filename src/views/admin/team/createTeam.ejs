@@ -1,21 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=
-     , initial-scale=1.0">
-     <title>Document</title>
-</head>
+<%- include ('../../partials/header.ejs') %> <%- include
+('../../partials/homenavbar.ejs')%>
 
-<body>
-     <h1>CRIAR TIME</h1>
-     <hr>
-     <a href="/">HOME</a>
-     <hr>
-     <form action="/admin/team/store" method="post">
-          <input type="text" name="name" placeholder="name">
-          <button type="submit">CRIAR</button>
-     </form>
-</body>
-</html>
-</html>
+<div class="container">
+  <div class="card mt-3">
+    <!-- mt = margin top / mb = margin bottom // ml = margin left // mr = margin right -->
+    <div class="card-header"><h1>CRIAR TIME</h1></div>
+    <div class="card-body">
+      <form action="/admin/team/store" method="POST">
+        <div class="form-group">
+          <label for="name">Nome do time:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            placeholder="name"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn btn-dark btn -block">Confirmar</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include ('../../partials/footer.ejs') %>

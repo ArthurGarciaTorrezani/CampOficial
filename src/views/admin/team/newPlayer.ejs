@@ -1,25 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Document</title>
-</head>
-<body>
-     <h1>ADICIONAR JOGADOR AO TIME</h1>
-     <hr>
-     <a href="/">HOME</a>
-     <hr>
-     <h2>Selecione o jogador disponível</h2>
-     <form action="/admin/team/addPlayer" method="post">
-          <select name="id" class="form-control">
-               <% users.forEach((user)=>{ %>
-                    <option value="<%= user.id %>"> <%= user.name %> </option>
-                <% }) %>
-              
-           </select>
-          <button type="submit">ADICIONAR</button>
-     </form>
-</body>
-</html>
-</html>
+<%- include ('../../partials/header.ejs') %> <%- include
+('../../partials/homenavbar.ejs')%>
+
+
+<div class="container">
+     <div class="card mt-3">
+          <div class="card-header"><h1>ADICIONAR JOGADOR</h1></div>
+          <div class="card-body">
+               <h2>Selecione o jogador disponível</h2>
+               <form action="/admin/team/addPlayer" method="post">
+                    <div class="form-group">
+                         <select name="id" class="form-control">
+                              <% users.forEach((user)=>{ %>
+                                   <option value="<%= user.id %>"> <%= user.name %> </option>
+                               <% }) %>
+                             
+                          </select>
+                    </div>
+                   
+                    <button type="submit" class="btn btn-dark btn -block">Confirmar</button>
+               </form>
+               </form>
+          </div>
+     </div>
+</div>
+<%- include ('../partials/footer.ejs') %>

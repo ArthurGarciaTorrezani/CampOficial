@@ -1,29 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ADMIN USER</title>
-  </head>
-  <body>
-    <h1>ADM USER</h1>
-    <hr />
-    <a href="/">Home</a>
-    <a href="/logout">Logout</a>
-    <hr />
-    <h2>Usuário: <%= user_name %></h2>
-    <hr>
-    <% if(team_id==null){ %>
-    <h2>CRIAR TIME</h2>
-    <a href="/admin/team/create">CRIAR TIME</a>
-    <% } else{ %>
-    <h1>SEU TIME:</h1>
-    <% if(team.captain_id==user_id){ %>
+<%- include ('../../partials/header.ejs') %> <%- include
+('../../partials/homenavbar.ejs')%>
+
+<div class="container">
+  <hr />
+  <div class="card mt-3">
+    <div class="card-header"><h1>PAGE ADM</h1></div>
+    <div class="card-body">
+      <% if(user.team_id==null){ %>
+      <h2><a href="/admin/team/create">CRIAR TIME</a></h2>
+      
+      <% } else{ %>
+      <h2>TIME: <%= team.name %></h2>
+      <hr />
+      <% if(team.captain_id==user.id){ %>
       <a href="/admin/team/newPlayer">ADICIONAR JOGADOR</a>
-      <% } %>
-    
-    <% team.users.forEach(user => { %>
-    <h3><%= user.name %></h3>
-    <% }) %> <% } %>
-  </body>
-</html>
+      <hr />
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>Jogadores</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% } %> <% team.users.forEach(user => { %>
+          <tr>
+            <th><%= user.name %></th>
+          </tr>
+          <% }) %> <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<%- include ('../../partials/footer.ejs') %>
