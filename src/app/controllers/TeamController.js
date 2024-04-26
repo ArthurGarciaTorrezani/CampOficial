@@ -34,6 +34,16 @@ class TeamController {
     ).then(res.redirect("/admin/user/homePage"));
   }
 
+  async deleteTeam(req,res){
+    req.session.user.team_id = null;
+    await Team.destroy({
+      where:{
+        id:req.session.user.team_id,
+      }
+    })
+    return res.redirect("/admin/user/homePage");
+  } 
+
   pageCreateTeam(req, res) {
     return res.render("admin/team/createTeam", { user: req.session.user });
   }

@@ -33,7 +33,7 @@ class User extends Model {
 
   static associate() {
     this.belongsTo(Team,{foreignKey: "team_id", as:'team' });
-    this.belongsTo(File,{foreignKey:"avatar_id", as:'avatar'});
+    this.belongsTo(File,{foreignKey:"avatar_id"});
   }
 }
 

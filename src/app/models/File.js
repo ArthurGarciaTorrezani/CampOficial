@@ -1,4 +1,5 @@
 import { Model, Sequelize } from "sequelize";
+import User from "./User";
 
 class File extends Model {
   static init(sequelize) {
@@ -16,6 +17,7 @@ class File extends Model {
 
     return this;
   }
+  
 }
 
 export default File;

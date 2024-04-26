@@ -41,10 +41,14 @@ routes.get("/admin/team/create", TeamController.pageCreateTeam);
 routes.get("/admin/team/newPlayer", TeamController.pageNewPlayer);
 routes.get("/logout", SessionController.logout);
 routes.get('/admin/user/profile',UserController.pageProfile);
+routes.get('/admin/user/avatarUpdate',UserController.pageAvatarUpdate)
+routes.get('/admin/user/nameUpdate',UserController.pageNameUpdate)
+
 //POST
 routes.post("/admin/team/store", TeamController.store);
 routes.post("/admin/team/addPlayer", TeamController.addPlayer);
 routes.post('/admin/team/removePlayer',TeamController.removePlayer)
-routes.get('/admin/user/avatar',UserController.pageAvatar)
+routes.post('/admin/team/deleteTeam',TeamController.deleteTeam)
+
 
 export default routes;

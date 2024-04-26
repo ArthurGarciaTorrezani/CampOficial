@@ -15,11 +15,12 @@ class SessionController {
       return res.redirect("/");
     }
 
-    const { id, name, team_id } = user;
+    const { id, name, team_id,avatar_id } = user;
     req.session.user = {
       id: id,
       name: name,
       team_id: team_id,
+      avatar_id:avatar_id
     };
     return res.redirect("/admin/user/homePage");
   }

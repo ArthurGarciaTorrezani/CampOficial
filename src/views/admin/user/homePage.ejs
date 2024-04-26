@@ -4,14 +4,7 @@
 <div class="container">
   <hr />
   <div class="card mt-3">
-
-
-    <img
-    src="/img/uploads/<%= nameAvatar %>"
-    
-    width="300"
-    height="200"
-  />
+    <img src="/img/uploads/<%= nameAvatar %>" width="300" height="200" />
 
     <div class="card-header"><h1>PAGE ADM</h1></div>
     <div class="card-body">
@@ -21,7 +14,16 @@
       <h2>TIME: <%= team.name %></h2>
       <hr />
       <% if(team.captain_id==user.id){ %>
-      <a href="/admin/team/newPlayer">ADICIONAR JOGADOR</a>
+      <a href="/admin/team/newPlayer"  class="btn btn-success">ADICIONAR JOGADOR</a>
+      <form
+                method="POST"
+                action="/admin/team/deleteTeam"
+                style="display: inline"
+                onsubmit="deletarTime(event, this)"
+              >
+                <button class="btn btn-danger">Deletar time</button>
+              </form>
+  
       <hr />
       <table class="table table-bordered">
         <thead class="thead-dark">
@@ -39,7 +41,7 @@
                 method="POST"
                 action="/admin/team/removePlayer"
                 style="display: inline"
-                onsubmit="confirmarDelecao(event, this)"
+                onsubmit="deletarJogador(event, this)"
               >
                 <input type="hidden" name="id" id="id" value="<%= user.id %>" />
                 <button class="btn btn-danger">Deletar</button>
@@ -69,13 +71,20 @@
   </div>
 </div>
 
-
-
 <%- include ('../../partials/footer.ejs') %>
+
 <script>
-  function confirmarDelecao(event, form) {
+  function deletarJogador(event, form) {
     event.preventDefault();
-    var decision = confirm("Você quer deletar este jogador?");
+    var decision = confirm("Você quer remover este jogador?");
+    if (decision) {
+      form.submit();
+    }
+  }
+
+  function deletarTime(event, form) {
+    event.preventDefault();
+    var decision = confirm("Você quer deletar o time?");
     if (decision) {
       form.submit();
     }
