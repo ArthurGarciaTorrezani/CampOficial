@@ -68,15 +68,22 @@ class UserController {
   }
 
   async pageProfile(req, res) {
+    let nameFile;
     const user = await User.findOne({
       where: {
         id: req.session.user.id,
       },
       include: [{ model: File }],
     });
+
+    if (user.file == null) {
+      nameFile = "padrao.webp";
+    } else {
+      nameFile = user.file.name;
+    }
     return res.render("admin/user/profile", {
       user: user,
-      avatar: user.file.name,
+      avatar: nameFile,
     });
   }
 
