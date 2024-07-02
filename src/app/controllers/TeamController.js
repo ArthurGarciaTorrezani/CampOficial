@@ -35,10 +35,10 @@ class TeamController {
   }
 
   async deleteTeam(req,res){
-    req.session.user.team_id = null;
+    const id = req.body.team_id;
     await Team.destroy({
       where:{
-        id:req.session.user.team_id,
+        id:id,
       }
     })
     return res.redirect("/admin/user/homePage");

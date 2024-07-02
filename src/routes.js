@@ -27,7 +27,8 @@ routes.get("/", async (req, res) => {
 //GET
 routes.get("/user/create", UserController.pageCreateUser);
 routes.get("/user/login", UserController.pageLogin);
-
+routes.get("/noteam", UserController.pageNoTeamUser);
+routes.get("/publicProfileUser/:id", UserController.pagePublicProfileUser);
 //POST
 routes.post("/user/store", UserController.store);
 routes.post("/session", SessionController.store);

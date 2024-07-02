@@ -18,7 +18,6 @@ class Team extends Model {
   }
 
   static associate() {
-    
     this.belongsTo(User,{foreignKey:'captain_id',as:'captain'})
     this.hasMany(User);
   }

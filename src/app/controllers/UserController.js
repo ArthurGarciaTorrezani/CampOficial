@@ -95,6 +95,34 @@ class UserController {
     const user = await User.findByPk(req.session.user.id);
     return res.render("admin/user/update/nameUpdate", { user });
   }
+
+  async pagePublicProfileUser(req,res){
+    const id = req.params.id;
+    console.log(id)
+    let nameFile;
+    const user = await User.findOne({
+      where: {
+        id: id,
+      },
+      include: [{ model: File }],
+    });
+
+    if (user.file == null) {
+      nameFile = "padrao.webp";
+    } else {
+      nameFile = user.file.name;
+    }
+    return res.render("publicUser", {
+      user: user,
+      avatar: nameFile,
+    });
+  }
+
+  async pageNoTeamUser(req,res){
+    await User.findAll({ where: { team_id: null },}).then((users)=>{
+      res.render("noTeamUsers",{users:users,user: req.session.user});
+    })
+  }
 }
 
 export default new UserController();

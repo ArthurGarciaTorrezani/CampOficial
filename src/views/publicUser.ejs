@@ -1,0 +1,37 @@
+<%- include ('partials/header.ejs') %> 
+<%- include ('partials/navbar.ejs')%>
+<div class="container">
+  <div class="card-header"><h1>PROFILE</h1></div>
+  <div class="card-body">
+    <img src="/img/uploads/<%= avatar %>" width="300" height="200" />
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <br />
+        <br />
+        <tr>
+          <th>Tipo do Dado</th>
+          <th>Dado</th>
+          <th>Opções</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Nome</th>
+          <th><%= user.name %></th>
+        </tr>
+        <tr>
+          <th>Registro Acadêmico</th>
+          <th><%= user.ra %></th>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <th><%= user.email %></th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<br />
+
+<%- include ('partials/footer.ejs') %>

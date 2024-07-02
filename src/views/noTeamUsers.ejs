@@ -1,0 +1,29 @@
+<%- include ('partials/header.ejs') %> <%- include ('partials/homenavbar.ejs')%>
+<body>
+  <div class="container">
+    <hr />
+    <h2 style="text-align: center">jogadores SEM TIME</h2>
+    <hr />
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Opções</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach(user => { %>
+        <tr>
+          <th><%= user.name %></th>
+          <th><%= user.email %></th>
+          <th><a href="/publicProfileUser/<%= user.id %>" class="btn btn-success">Ver perfil</a></th>
+        </tr>
+
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+<%- include ('partials/footer.ejs') %>
