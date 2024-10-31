@@ -11,6 +11,6 @@ module.exports = {
      },
    };
    
-   // exportas as configuracoes para acessar o banco de dados
+   // exporta as configuracoes para acessar o banco de dados
    
    
